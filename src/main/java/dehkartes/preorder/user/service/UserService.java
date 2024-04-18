@@ -1,5 +1,6 @@
 package dehkartes.preorder.user.service;
 
+import dehkartes.preorder.email.EmailController;
 import dehkartes.preorder.user.dto.UserDTO;
 import dehkartes.preorder.user.repository.UserRepository;
 import dehkartes.preorder.util.AES256;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
+import java.util.Objects;
 
 @Service
 public class UserService {
@@ -24,6 +26,18 @@ public class UserService {
 				.email(AES256.aesCBCEncode(String.valueOf(payload.get("email"))))
 				.build();
 		userRepository.save(user);
+	}
+
+	public boolean verifyUser(Map<String, Object> payload) {
+		if(Objects.equals(String.valueOf(payload.get("code")), String.valueOf(payload.get("userInput")))) {
+			UserDTO user = UserDTO.builder()
+					.id(String.valueOf(payload.get("id")))
+					.verified(true)
+					.build();
+			userRepository.save(user);
+			return true;
+		}
+		return false;
 	}
 
 	public void updateUser(Map<String, Object> payload) throws Exception {

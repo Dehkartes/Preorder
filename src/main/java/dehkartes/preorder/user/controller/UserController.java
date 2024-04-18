@@ -24,6 +24,10 @@ public class UserController {
 		userService.updateUser(payload);
 	}
 
+	@PostMapping("/verified")
+	public boolean verifyUser(@RequestParam Map<String, Object> payload) throws Exception {
+		return userService.verifyUser(payload);
+	}
 	@PostMapping("/find")
 	public UserDTO findUser(String id) throws Exception {
 		return userService.findUser(id);

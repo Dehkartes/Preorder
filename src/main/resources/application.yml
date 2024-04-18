@@ -2,6 +2,20 @@ spring:
     application:
         name: preorder
 
+    mail:
+        host: smtp.gmail.com
+        port: 587
+        username: hashfractal@gmail.com
+        password: rawo hmdw ilah vpfg
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    starttls:
+                        enable: true
+                        required: true
+
+
     datasource:
         url: jdbc:mariadb://localhost:3306/preorder
         username: dehkartes
