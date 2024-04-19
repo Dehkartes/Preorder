@@ -14,10 +14,6 @@ public class EmailController {
 
 	@PostMapping("/check")
 	public String mailCheck(String email) {
-		int authNumber = mailService.sendMail(email);
-
-		String authCode = "" + authNumber;
-
-		return authCode;
+		return String.valueOf(mailService.sendMail(email));
 	}
 }
