@@ -1,10 +1,8 @@
 package dehkartes.preorder.user.service;
 
-import dehkartes.preorder.email.EmailController;
 import dehkartes.preorder.user.dto.UserDTO;
 import dehkartes.preorder.user.repository.UserRepository;
 import dehkartes.preorder.util.AES256;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,6 +48,7 @@ public class UserService {
 		userRepository.save(user);
 	}
 
+//	엔티티 DTO 구분하기, Convert사용하기
 	public UserDTO findUser(String id) throws Exception {
 		UserDTO user = userRepository.findById(id)
 				.orElseThrow();

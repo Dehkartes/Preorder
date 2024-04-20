@@ -1,16 +1,16 @@
-package dehkartes.preorder.email;
+package dehkartes.preorder.util;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
 
-@Service
 @RequiredArgsConstructor
-public class EmailService {
-	private final JavaMailSender javaMailSender;
+@Service
+public class Email {
+	private final JavaMailSender javaMailSender = new JavaMailSenderImpl();
     private static final String senderEmail= "hashfractal@gmail.com";
     private static int number;
 
@@ -38,7 +38,7 @@ public class EmailService {
         return message;
     }
 
-    public int sendMail(String mail){
+    public int sendMail(String mail) {
         MimeMessage message = CreateMail(mail);
 
 		if(message != null) {
