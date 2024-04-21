@@ -3,24 +3,26 @@ package dehkartes.preorder.product.controller;
 import dehkartes.preorder.product.entity.Product;
 import dehkartes.preorder.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/product")
+@RequestMapping("product")
 @RequiredArgsConstructor
 public class ProductController {
 	private final ProductService productService;
-	@PostMapping("/create")
-	public void createUser(@RequestParam Product payload) throws Exception {
+	@PostMapping("create")
+	public void createProduct(@RequestBody Product payload) throws Exception {
 		productService.createProduct(payload);
 	}
 
-	@PostMapping("/find")
+	@GetMapping()
+	public Product getProductById(@RequestParam("id") int id) {
+		return productService.getProductById(id);
+	}
+
+	@PostMapping("findAll")
 	public List<Product> getProductList() throws Exception {
 		return productService.getProductList();
 	}
