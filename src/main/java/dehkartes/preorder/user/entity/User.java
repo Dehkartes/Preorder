@@ -1,7 +1,6 @@
-package dehkartes.preorder.user.dto;
+package dehkartes.preorder.user.entity;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
@@ -13,7 +12,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDTO {
+public class User {
 	@Id
 	String id;
 	String password;

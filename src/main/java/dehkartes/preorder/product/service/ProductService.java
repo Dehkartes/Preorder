@@ -1,6 +1,6 @@
 package dehkartes.preorder.product.service;
 
-import dehkartes.preorder.product.dto.ProductDTO;
+import dehkartes.preorder.product.entity.Product;
 import dehkartes.preorder.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,11 +12,11 @@ import java.util.List;
 public class ProductService {
 	private final ProductRepository productRepository;
 
-	public void createProduct(ProductDTO payload) {
+	public void createProduct(Product payload) {
 		productRepository.save(payload);
 	}
 
-	public List<ProductDTO> getProductList() {
+	public List<Product> getProductList() {
 		return productRepository.findAll();
 	}
 }

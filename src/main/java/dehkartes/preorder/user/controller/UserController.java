@@ -1,6 +1,6 @@
 package dehkartes.preorder.user.controller;
 
-import dehkartes.preorder.user.dto.UserDTO;
+import dehkartes.preorder.user.entity.User;
 import dehkartes.preorder.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +28,7 @@ public class UserController {
 		return userService.verifyUser(payload);
 	}
 	@PostMapping("/find")
-	public UserDTO findUser(String id) throws Exception {
+	public User findUser(String id) throws Exception {
 		return userService.findUser(id);
 	}
 }

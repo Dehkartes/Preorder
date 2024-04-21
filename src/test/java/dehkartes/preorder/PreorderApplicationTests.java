@@ -1,6 +1,6 @@
 package dehkartes.preorder;
 
-import dehkartes.preorder.user.dto.UserDTO;
+import dehkartes.preorder.user.entity.User;
 import dehkartes.preorder.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
@@ -13,7 +13,7 @@ class PreorderApplicationTests {
 
 	@Test
 	void TestJpa() throws Exception {
-		UserDTO user = new UserDTO();
+		User user = new User();
 		user.setId("test");
 		this.userRepository.save(user);
 	}

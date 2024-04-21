@@ -8,10 +8,10 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class EmailService {
-	private final JavaMailSender javaMailSender = new JavaMailSenderImpl();
+	private final JavaMailSender javaMailSender;
     private static final String senderEmail= "hashfractal@gmail.com";
     private static int number;
 

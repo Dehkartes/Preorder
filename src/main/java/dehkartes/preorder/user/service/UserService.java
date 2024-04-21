@@ -1,6 +1,6 @@
 package dehkartes.preorder.user.service;
 
-import dehkartes.preorder.user.dto.UserDTO;
+import dehkartes.preorder.user.entity.User;
 import dehkartes.preorder.user.repository.UserRepository;
 import dehkartes.preorder.util.AES256;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,7 @@ public class UserService {
 	private final UserRepository userRepository;
 
 	public void createUser(Map<String, Object> payload) throws Exception {
-		UserDTO user = UserDTO.builder()
+		User user = User.builder()
 				.id(String.valueOf(payload.get("id")))
 				.name(AES256.aesCBCEncode(String.valueOf(payload.get("name"))))
 				.phone(String.valueOf(payload.get("phone")))
@@ -27,7 +27,7 @@ public class UserService {
 
 	public boolean verifyUser(Map<String, Object> payload) {
 		if(Objects.equals(String.valueOf(payload.get("code")), String.valueOf(payload.get("userInput")))) {
-			UserDTO user = UserDTO.builder()
+			User user = User.builder()
 					.id(String.valueOf(payload.get("id")))
 					.verified(true)
 					.build();
@@ -38,7 +38,7 @@ public class UserService {
 	}
 
 	public void updateUser(Map<String, Object> payload) throws Exception {
-		UserDTO user = userRepository.findById(String.valueOf(payload.get("id")))
+		User user = userRepository.findById(String.valueOf(payload.get("id")))
 				.orElseThrow();
 		user.setAddress(AES256.aesCBCEncode(String.valueOf(payload.get("address"))));
 		user.setPhone(String.valueOf(payload.get("phone")));
@@ -48,8 +48,8 @@ public class UserService {
 	}
 
 //	엔티티 DTO 구분하기, Convert사용하기
-	public UserDTO findUser(String id) throws Exception {
-		UserDTO user = userRepository.findById(id)
+	public User findUser(String id) throws Exception {
+		User user = userRepository.findById(id)
 				.orElseThrow();
 		user.setName(AES256.aesCBCDecode(user.getName()));
 		user.setPassword(AES256.aesCBCDecode(user.getPassword()));

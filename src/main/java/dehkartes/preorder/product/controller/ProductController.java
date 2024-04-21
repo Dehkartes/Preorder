@@ -1,6 +1,6 @@
 package dehkartes.preorder.product.controller;
 
-import dehkartes.preorder.product.dto.ProductDTO;
+import dehkartes.preorder.product.entity.Product;
 import dehkartes.preorder.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,12 +16,12 @@ import java.util.List;
 public class ProductController {
 	private final ProductService productService;
 	@PostMapping("/create")
-	public void createUser(@RequestParam ProductDTO payload) throws Exception {
+	public void createUser(@RequestParam Product payload) throws Exception {
 		productService.createProduct(payload);
 	}
 
 	@PostMapping("/find")
-	public List<ProductDTO> getProductList() throws Exception {
+	public List<Product> getProductList() throws Exception {
 		return productService.getProductList();
 	}
 }

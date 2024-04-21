@@ -1,4 +1,4 @@
-package dehkartes.preorder.product.dto;
+package dehkartes.preorder.product.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -12,7 +12,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductDTO {
+public class Product {
 	@Id
 	String id;
 	String stock;
