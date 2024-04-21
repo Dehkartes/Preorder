@@ -1,16 +1,12 @@
 package dehkartes.preorder.email.service;
 
-import dehkartes.preorder.user.dto.UserDTO;
 import dehkartes.preorder.verification.repository.VerificationRepository;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
-
-import java.util.HashMap;
 
 @RequiredArgsConstructor
 @Service

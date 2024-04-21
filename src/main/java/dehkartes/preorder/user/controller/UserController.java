@@ -2,17 +2,16 @@ package dehkartes.preorder.user.controller;
 
 import dehkartes.preorder.user.dto.UserDTO;
 import dehkartes.preorder.user.service.UserService;
-import org.checkerframework.framework.qual.PostconditionAnnotation;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
+@RequiredArgsConstructor
 public class UserController {
-	@Autowired
-	private UserService userService;
+	private final UserService userService;
 
 	@PostMapping("/create")
 	public void createUser(@RequestParam Map<String, Object> payload) throws Exception {

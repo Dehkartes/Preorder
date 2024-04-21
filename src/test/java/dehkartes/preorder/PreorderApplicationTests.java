@@ -2,13 +2,13 @@ package dehkartes.preorder;
 
 import dehkartes.preorder.user.dto.UserDTO;
 import dehkartes.preorder.user.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
+@RequiredArgsConstructor
 class PreorderApplicationTests {
-	@Autowired
 	private UserRepository userRepository;
 
 	@Test

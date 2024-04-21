@@ -2,15 +2,15 @@ package dehkartes.preorder.product.service;
 
 import dehkartes.preorder.product.dto.ProductDTO;
 import dehkartes.preorder.product.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ProductService {
-	@Autowired
-	private ProductRepository productRepository;
+	private final ProductRepository productRepository;
 
 	public void createProduct(ProductDTO payload) {
 		productRepository.save(payload);

@@ -3,16 +3,15 @@ package dehkartes.preorder.user.service;
 import dehkartes.preorder.user.dto.UserDTO;
 import dehkartes.preorder.user.repository.UserRepository;
 import dehkartes.preorder.util.AES256;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.Map;
 import java.util.Objects;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
-	@Autowired
-	private UserRepository userRepository;
+	private final UserRepository userRepository;
 
 	public void createUser(Map<String, Object> payload) throws Exception {
 		UserDTO user = UserDTO.builder()
