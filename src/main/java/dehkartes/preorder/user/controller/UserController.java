@@ -2,6 +2,7 @@ package dehkartes.preorder.user.controller;
 
 import dehkartes.preorder.user.entity.User;
 import dehkartes.preorder.user.service.UserService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,12 +24,14 @@ public class UserController {
 		userService.updateUser(payload);
 	}
 
-	@PostMapping("/verified")
-	public boolean verifyUser(@RequestParam Map<String, Object> payload) throws Exception {
-		return userService.verifyUser(payload);
+	@Transactional
+	@PostMapping("verified")
+	public void verifyUser(@RequestBody String id) throws Exception {
+		userService.verifyUser(id);
 	}
 	@PostMapping("/find")
 	public User findUser(String id) throws Exception {
 		return userService.findUser(id);
 	}
+
 }

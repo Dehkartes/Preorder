@@ -4,6 +4,7 @@ import dehkartes.preorder.util.AES256;
 import dehkartes.preorder.verification.entity.Verification;
 import dehkartes.preorder.verification.repository.VerificationRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.juli.VerbatimFormatter;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,8 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
+
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -33,5 +36,23 @@ public class VerificationService {
 						.authCode(response)
 						.build()
 		);
+	}
+
+	public void tryVerification(String id, String userInput) {
+		if(Objects.equals(verificationRepository.findAuthCodebyId(id), userInput)) {
+			WebClient webClient = WebClient.builder().build();
+			String response = webClient.post()
+					.uri("http://localhost:8080/user/verified")
+					.bodyValue(id)
+					.retrieve()
+					.bodyToMono(String.class)
+					.block();
+
+			verificationRepository.delete(
+					Verification.builder()
+							.id(id)
+							.build()
+			);
+		}
 	}
 }

@@ -15,7 +15,6 @@ spring:
                         enable: true
                         required: true
 
-
     datasource:
         url: jdbc:mariadb://localhost:3306/preorder
         username: dehkartes

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/verification")
+@RequestMapping("verification")
 @RequiredArgsConstructor
 public class VerificationController {
 	private final VerificationService verificationService;
@@ -15,5 +15,10 @@ public class VerificationController {
 	@PostMapping()
 	public void verification(String id) throws Exception {
 		verificationService.addVerification(id);
+	}
+
+	@PostMapping("tryVerification")
+	public void tryVerification(String id, String userInput) {
+		verificationService.tryVerification(id, userInput);
 	}
 }

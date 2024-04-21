@@ -25,16 +25,8 @@ public class UserService {
 		userRepository.save(user);
 	}
 
-	public boolean verifyUser(Map<String, Object> payload) {
-		if(Objects.equals(String.valueOf(payload.get("code")), String.valueOf(payload.get("userInput")))) {
-			User user = User.builder()
-					.id(String.valueOf(payload.get("id")))
-					.verified(true)
-					.build();
-			userRepository.save(user);
-			return true;
-		}
-		return false;
+	public void verifyUser(String id) {
+		userRepository.updateUserVerifiedToTrueByID(id);
 	}
 
 	public void updateUser(Map<String, Object> payload) throws Exception {
