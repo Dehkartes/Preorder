@@ -62,7 +62,7 @@ public class JwtLoginController {
 
 	@PostMapping("/join")
 	public String join(@Valid @ModelAttribute RegisterRequest joinRequest,
-					   BindingResult bindingResult, Model model) {
+					   BindingResult bindingResult, Model model) throws Exception {
 
 		model.addAttribute("loginType", "jwt-login");
 		model.addAttribute("pageName", "스프링 시큐리티 JWT 로그인");
@@ -95,8 +95,7 @@ public class JwtLoginController {
 			return "ID 또는 비밀번호가 일치하지 않습니다!";
 		}
 
-		String token = jwtUtil.createJwt(member.getId(), member.getRole(), 1000 * 60 * 60L);
-		return token;
+		return jwtUtil.createJwt(member.getId(), member.getRole(), 1000 * 60 * 60L);
 	}
 
 	@GetMapping("/info")

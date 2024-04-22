@@ -75,7 +75,7 @@ public class MemberService {
 	}
 
 	// BCryptPasswordEncoder 를 통해서 비밀번호 암호화 작업 추가한 회원가입 로직
-	public void securityJoin(RegisterRequest joinRequest){
+	public void securityJoin(RegisterRequest joinRequest) throws Exception {
 		if(memberRepository.existsById(joinRequest.getLoginId())){
 			return;
 		}
