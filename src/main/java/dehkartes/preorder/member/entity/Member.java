@@ -1,4 +1,4 @@
-package dehkartes.preorder.user.entity;
+package dehkartes.preorder.member.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -14,7 +14,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class Member {
 	@Id
 	String id;
 	String password;
