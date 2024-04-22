@@ -18,5 +18,5 @@ public class WishList {
 	int id;
 	@Column(name = "Member.ID")
 	String memberId;
-	String ItemList;
+	String itemList;
 }
