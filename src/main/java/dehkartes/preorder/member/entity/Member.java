@@ -7,7 +7,7 @@ import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
-@Table(name = "User")
+@Table(name = "Member")
 @DynamicUpdate
 @Getter
 @Setter
@@ -23,4 +23,6 @@ public class Member {
 	String phone;
 	String address;
 	String email;
+	String role;
 }
+

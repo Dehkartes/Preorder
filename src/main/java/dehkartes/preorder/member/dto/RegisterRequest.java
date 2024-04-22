@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class JoinRequest {
+public class RegisterRequest {
 
 	@NotBlank(message = "ID를 입력하세요.")
 	private String loginId;

@@ -1,16 +1,21 @@
 package dehkartes.preorder.member.service;
 
+import dehkartes.preorder.member.dto.LoginRequest;
+import dehkartes.preorder.member.dto.RegisterRequest;
 import dehkartes.preorder.member.entity.Member;
 import dehkartes.preorder.member.repository.MemberRepository;
 import dehkartes.preorder.util.AES256;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class MemberService {
 	private final MemberRepository memberRepository;
+	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	public void createMember(Map<String, Object> payload) throws Exception {
 		Member member = Member.builder()
@@ -47,5 +52,36 @@ public class MemberService {
 		member.setAddress(AES256.aesCBCDecode(member.getAddress()));
 		member.setEmail(AES256.aesCBCDecode(member.getEmail()));
 		return member;
+	}
+
+	public boolean getExistId(String id) {
+		return memberRepository.existsById(id);
+	}
+
+	public Member login(LoginRequest loginRequest) {
+		Member findMember = memberRepository.findById(loginRequest.getLoginId()).orElse(null);
+		if (!bCryptPasswordEncoder.matches(loginRequest.getPassword(), findMember.getPassword())) {
+			return null;
+		}
+
+		return findMember;
+	}
+
+	public Member getLoginMemberById(String memberId){
+		if(memberId == null) return null;
+
+		Optional<Member> findMember = memberRepository.findById(memberId);
+		return findMember.orElse(null);
+	}
+
+	// BCryptPasswordEncoder 를 통해서 비밀번호 암호화 작업 추가한 회원가입 로직
+	public void securityJoin(RegisterRequest joinRequest){
+		if(memberRepository.existsById(joinRequest.getLoginId())){
+			return;
+		}
+
+		joinRequest.setPassword(bCryptPasswordEncoder.encode(joinRequest.getPassword()));
+
+		memberRepository.save(joinRequest.toEntity());
 	}
 }

@@ -12,4 +12,6 @@ public interface MemberRepository extends JpaRepository<Member, String> {
 	@Query("update Member x set x.verified = true where x.id = :id")
 	@Modifying
 	void updateUserVerifiedToTrueByID(@Param("id") String id);
+
+	Member findByName(String name);
 }
