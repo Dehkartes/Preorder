@@ -1,6 +1,6 @@
-package dehkartes.preorder.product.component;
+package dehkartes.preorder.order.component;
 
-enum OrderStatus {
+public enum OrderStatus {
 	주문완료,
 	배송중,
 	배송완료,
