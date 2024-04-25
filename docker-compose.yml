@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+    database:
+        image: mariadb
+        environment:
+            - MARIADB_ROOT_PASSWORD=root
+        ports:
+            - "3306:3306"
+
+    backend:
+        build:
+            context: .
+            dockerfile: ./compose/springboot/Dockerfile
+        ports:
+            - "8080:8080"
+        volumes:
+            - ./:/app/
+        depends_on:
+            - database
