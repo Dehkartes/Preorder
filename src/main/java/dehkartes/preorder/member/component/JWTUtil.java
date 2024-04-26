@@ -17,7 +17,7 @@ public class JWTUtil {
 
 	// @Value : application.yml에서의 특정한 변수 데이터를 가져올 수 있음
 	// string key는 jwt에서 사용 안하므로 객체 키 생성!
-	public JWTUtil(@Value("${Encrypt.jwt}") String secret) {
+	public JWTUtil(@Value("${encrypt.jwt}") String secret) {
 
 		this.secretKey = new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), Jwts.SIG.HS256.key().build().getAlgorithm());
 	}

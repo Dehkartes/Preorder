@@ -14,7 +14,7 @@ public class AES256 {
 
 	private static String privateKey_256;
 
-	@Value("${Encrypt.AES256}")
+	@Value("${encrypt.AES256}")
 	public void setPrivateKey_256(String value) {
 		privateKey_256 = value;
 	}
