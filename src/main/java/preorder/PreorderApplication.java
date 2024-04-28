@@ -1,4 +1,4 @@
-package dehkartes.preorder;
+package preorder;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

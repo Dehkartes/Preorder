@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/preorder.main.iml" filepath="$PROJECT_DIR$/.idea/modules/preorder.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/preorder.test.iml" filepath="$PROJECT_DIR$/.idea/modules/preorder.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/user/preorder.user.main.iml" filepath="$PROJECT_DIR$/.idea/modules/user/preorder.user.main.iml" />
     </modules>
   </component>
 </project>

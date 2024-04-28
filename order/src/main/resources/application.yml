@@ -1,0 +1,28 @@
+server:
+    port: 8081
+
+spring:
+    config:
+        import:
+            secret.yml
+
+    application:
+        name: preorder
+
+    jpa:
+        hibernate:
+            ddl-auto: none
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        properties:
+            hibernate:
+                format_sql: true
+                show_sql: true
+                use_sql_comments: true
+logging:
+    level:
+        org:
+            hibernate:
+                type:
+                    descriptor:
+                        sql: trace

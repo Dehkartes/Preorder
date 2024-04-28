@@ -1,5 +1,7 @@
 doc
-
+compose
+preorder-0.0.1-SNAPSHOT.jar
+docker-compose.yml
 
 # Created by https://www.toptal.com/developers/gitignore/api/intellij,visualstudiocode,gradle
 # Edit at https://www.toptal.com/developers/gitignore?templates=intellij,visualstudiocode,gradle
@@ -165,3 +167,6 @@ gradle-app.setting
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,visualstudiocode,gradle
 src/main/resources/secret.yml
+user/src/main/resources/secret.yml
+product/src/main/resources/secret.yml
+order/src/main/resources/secret.yml
