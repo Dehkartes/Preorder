@@ -11,8 +11,10 @@
         <module name="preorder.order.test" />
         <module name="preorder.product.main" />
         <module name="preorder.compose.main" />
+        <module name="preorder.main" />
         <module name="preorder.user.test" />
         <module name="preorder.product.test" />
+        <module name="preorder.test" />
         <module name="preorder.user.main" />
         <module name="preorder.compose.test" />
         <module name="preorder.order.main" />
