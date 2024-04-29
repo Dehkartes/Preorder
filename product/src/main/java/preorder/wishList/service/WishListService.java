@@ -3,9 +3,9 @@ package preorder.wishList.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dehkartes.preorder.wishList.dto.WishListDTO;
-import dehkartes.preorder.wishList.entity.WishList;
-import dehkartes.preorder.wishList.repository.WishListRepository;
+import preorder.wishList.dto.WishListDTO;
+import preorder.wishList.entity.WishList;
+import preorder.wishList.repository.WishListRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

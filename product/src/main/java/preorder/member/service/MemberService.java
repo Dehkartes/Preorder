@@ -1,10 +1,10 @@
 package preorder.member.service;
 
-import dehkartes.preorder.member.dto.LoginRequest;
-import dehkartes.preorder.member.dto.RegisterRequest;
-import dehkartes.preorder.member.entity.Member;
-import dehkartes.preorder.member.repository.MemberRepository;
-import dehkartes.preorder.util.AES256;
+import preorder.member.dto.LoginRequest;
+import preorder.member.dto.RegisterRequest;
+import preorder.member.entity.Member;
+import preorder.member.repository.MemberRepository;
+import preorder.util.AES256;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

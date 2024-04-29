@@ -1,7 +1,7 @@
 package preorder.product.service;
 
-import dehkartes.preorder.product.entity.Product;
-import dehkartes.preorder.product.repository.ProductRepository;
+import preorder.product.entity.Product;
+import preorder.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

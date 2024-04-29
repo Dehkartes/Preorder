@@ -1,6 +1,6 @@
 package preorder.product.repository;
 
-import dehkartes.preorder.product.entity.Product;
+import preorder.product.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

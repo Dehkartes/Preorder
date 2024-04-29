@@ -1,8 +1,8 @@
 package preorder.member.service;
 
-import dehkartes.preorder.member.component.CustomUserDetails;
-import dehkartes.preorder.member.entity.Member;
-import dehkartes.preorder.member.repository.MemberRepository;
+import preorder.member.component.CustomUserDetails;
+import preorder.member.entity.Member;
+import preorder.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

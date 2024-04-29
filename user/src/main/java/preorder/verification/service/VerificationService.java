@@ -1,8 +1,8 @@
 package preorder.verification.service;
 
-import dehkartes.preorder.util.AES256;
-import dehkartes.preorder.verification.entity.Verification;
-import dehkartes.preorder.verification.repository.VerificationRepository;
+import preorder.util.AES256;
+import preorder.verification.entity.Verification;
+import preorder.verification.repository.VerificationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;

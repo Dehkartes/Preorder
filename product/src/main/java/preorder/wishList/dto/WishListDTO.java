@@ -2,7 +2,7 @@ package preorder.wishList.dto;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dehkartes.preorder.wishList.entity.WishList;
+import preorder.wishList.entity.WishList;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

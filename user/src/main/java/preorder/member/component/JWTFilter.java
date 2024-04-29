@@ -1,6 +1,6 @@
 package preorder.member.component;
 
-import dehkartes.preorder.member.entity.Member;
+import preorder.member.entity.Member;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

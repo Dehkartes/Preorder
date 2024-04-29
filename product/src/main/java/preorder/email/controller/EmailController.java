@@ -1,6 +1,6 @@
 package preorder.email.controller;
 
-import dehkartes.preorder.email.service.EmailService;
+import preorder.email.service.EmailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

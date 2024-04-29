@@ -1,6 +1,6 @@
 package preorder.member.component;
 
-import dehkartes.preorder.member.entity.Member;
+import preorder.member.entity.Member;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

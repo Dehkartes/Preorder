@@ -1,6 +1,6 @@
 package preorder.wishList.repository;
 
-import dehkartes.preorder.wishList.entity.WishList;
+import preorder.wishList.entity.WishList;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

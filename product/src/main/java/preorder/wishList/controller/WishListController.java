@@ -1,8 +1,8 @@
 package preorder.wishList.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import dehkartes.preorder.wishList.dto.WishListDTO;
-import dehkartes.preorder.wishList.service.WishListService;
+import preorder.wishList.dto.WishListDTO;
+import preorder.wishList.service.WishListService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -1,6 +1,6 @@
 package preorder.payment.orderDTO;
 
-import dehkartes.preorder.payment.entity.Payment;
+import preorder.payment.entity.Payment;
 import lombok.Data;
 
 import java.time.LocalDate;

@@ -1,7 +1,7 @@
 package preorder.payment.controller;
 
-import dehkartes.preorder.payment.entity.Payment;
-import dehkartes.preorder.payment.service.PaymentService;
+import preorder.payment.entity.Payment;
+import preorder.payment.service.PaymentService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

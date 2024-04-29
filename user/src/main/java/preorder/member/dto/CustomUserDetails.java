@@ -1,6 +1,6 @@
 package preorder.member.dto;
 
-import dehkartes.preorder.member.entity.Member;
+import preorder.member.entity.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

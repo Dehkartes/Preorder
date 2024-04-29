@@ -1,7 +1,7 @@
 package preorder.product.controller;
 
-import dehkartes.preorder.product.entity.Product;
-import dehkartes.preorder.product.service.ProductService;
+import preorder.product.entity.Product;
+import preorder.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

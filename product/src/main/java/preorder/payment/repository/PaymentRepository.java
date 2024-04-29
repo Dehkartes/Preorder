@@ -1,6 +1,6 @@
 package preorder.payment.repository;
 
-import dehkartes.preorder.payment.entity.Payment;
+import preorder.payment.entity.Payment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

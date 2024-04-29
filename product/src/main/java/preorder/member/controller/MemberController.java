@@ -1,7 +1,7 @@
 package preorder.member.controller;
 
-import dehkartes.preorder.member.entity.Member;
-import dehkartes.preorder.member.service.MemberService;
+import preorder.member.entity.Member;
+import preorder.member.service.MemberService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

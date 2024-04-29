@@ -9,7 +9,6 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 
-@Component
 public class AES256 {
 
 	private static String privateKey_256;

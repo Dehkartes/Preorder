@@ -1,8 +1,8 @@
 package preorder.payment.service;
 
-import dehkartes.preorder.payment.entity.Payment;
-import dehkartes.preorder.payment.orderDTO.PaymentDTO;
-import dehkartes.preorder.payment.repository.PaymentRepository;
+import preorder.payment.entity.Payment;
+import preorder.payment.orderDTO.PaymentDTO;
+import preorder.payment.repository.PaymentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

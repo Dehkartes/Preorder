@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
 
-@Component
 public class AES256 {
 
 	private static String privateKey_256;

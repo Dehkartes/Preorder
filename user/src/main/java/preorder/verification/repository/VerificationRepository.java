@@ -1,6 +1,6 @@
 package preorder.verification.repository;
 
-import dehkartes.preorder.verification.entity.Verification;
+import preorder.verification.entity.Verification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -6,6 +6,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @Configuration
 @EnableScheduling
-@ComponentScan(basePackages = "dehkartes.preorder")
+@ComponentScan(basePackages = "preorder")
 public class PaymentConfig {
 }

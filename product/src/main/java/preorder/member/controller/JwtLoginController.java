@@ -1,10 +1,10 @@
 package preorder.member.controller;
 
-import dehkartes.preorder.member.component.JWTUtil;
-import dehkartes.preorder.member.dto.LoginRequest;
-import dehkartes.preorder.member.dto.RegisterRequest;
-import dehkartes.preorder.member.entity.Member;
-import dehkartes.preorder.member.service.MemberService;
+import preorder.member.component.JWTUtil;
+import preorder.member.dto.LoginRequest;
+import preorder.member.dto.RegisterRequest;
+import preorder.member.entity.Member;
+import preorder.member.service.MemberService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
