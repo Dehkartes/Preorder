@@ -2,7 +2,7 @@ package preorder.member.service;
 
 import preorder.member.dto.LoginRequest;
 import preorder.member.dto.RegisterRequest;
-import preorder.member.entity.Member;
+import preorder.security.entity.Member;
 import preorder.member.repository.MemberRepository;
 import preorder.util.AES256;
 import lombok.RequiredArgsConstructor;

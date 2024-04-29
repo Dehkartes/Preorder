@@ -1,6 +1,6 @@
 package preorder.member.dto;
 
-import preorder.member.entity.Member;
+import preorder.security.entity.Member;
 import preorder.util.AES256;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

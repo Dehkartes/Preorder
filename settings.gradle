@@ -1,7 +1,6 @@
 rootProject.name = 'preorder'
-include 'compose'
-include 'order'
 include 'user'
 include 'order'
 include 'product'
+include 'core'
 

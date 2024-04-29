@@ -1,7 +1,7 @@
 package preorder.member.service;
 
-import preorder.member.component.CustomUserDetails;
-import preorder.member.entity.Member;
+import preorder.security.component.CustomUserDetails;
+import preorder.security.entity.Member;
 import preorder.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

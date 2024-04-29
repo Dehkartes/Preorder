@@ -1,6 +1,6 @@
 package preorder.member.controller;
 
-import preorder.member.entity.Member;
+import preorder.security.entity.Member;
 import preorder.member.service.MemberService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

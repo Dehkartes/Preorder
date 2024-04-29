@@ -1,9 +1,9 @@
 package preorder.member.controller;
 
-import preorder.member.component.JWTUtil;
+import preorder.security.component.JWTUtil;
 import preorder.member.dto.LoginRequest;
 import preorder.member.dto.RegisterRequest;
-import preorder.member.entity.Member;
+import preorder.security.entity.Member;
 import preorder.member.service.MemberService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
