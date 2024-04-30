@@ -1,6 +1,6 @@
 doc
 compose
-preorder-0.0.1-SNAPSHOT.jar
+.jar
 docker-compose.yml
 
 # Created by https://www.toptal.com/developers/gitignore/api/intellij,visualstudiocode,gradle

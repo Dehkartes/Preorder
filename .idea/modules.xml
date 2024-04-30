@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/preorder.core.main.iml" filepath="$PROJECT_DIR$/.idea/modules/core/preorder.core.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/preorder.main.iml" filepath="$PROJECT_DIR$/.idea/modules/preorder.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/order/preorder.order.main.iml" filepath="$PROJECT_DIR$/.idea/modules/order/preorder.order.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/product/preorder.product.main.iml" filepath="$PROJECT_DIR$/.idea/modules/product/preorder.product.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/preorder.test.iml" filepath="$PROJECT_DIR$/.idea/modules/preorder.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/user/preorder.user.main.iml" filepath="$PROJECT_DIR$/.idea/modules/user/preorder.user.main.iml" />

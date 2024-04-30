@@ -9,12 +9,12 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 
-
+@Component
 public class AES256 {
 
 	private static String privateKey_256;
 
-	@Value("${encrypt.AES256}")
+	@Value("${encrypt.aes256}")
 	public void setPrivateKey_256(String value) {
 		privateKey_256 = value;
 	}
