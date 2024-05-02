@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/test/Preorder.preorder.test.main~1.iml" filepath="$PROJECT_DIR$/.idea/modules/test/Preorder.preorder.test.main~1.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/test/Preorder.preorder.test.test.iml" filepath="$PROJECT_DIR$/.idea/modules/test/Preorder.preorder.test.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/preorder.core.main.iml" filepath="$PROJECT_DIR$/.idea/modules/core/preorder.core.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gateway/preorder.gateway.main.iml" filepath="$PROJECT_DIR$/.idea/modules/gateway/preorder.gateway.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/preorder.main.iml" filepath="$PROJECT_DIR$/.idea/modules/preorder.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/order/preorder.order.main.iml" filepath="$PROJECT_DIR$/.idea/modules/order/preorder.order.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/product/preorder.product.main.iml" filepath="$PROJECT_DIR$/.idea/modules/product/preorder.product.main.iml" />

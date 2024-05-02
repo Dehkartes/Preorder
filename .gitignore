@@ -170,3 +170,6 @@ src/main/resources/secret.yml
 user/src/main/resources/secret.yml
 product/src/main/resources/secret.yml
 order/src/main/resources/secret.yml
+gateway/src/main/resources/secret.yml
+gateway/src/main/resources/secret.yml
+gateway/src/main/resources/secret.yml

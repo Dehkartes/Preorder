@@ -3,3 +3,5 @@ include 'user'
 include 'order'
 include 'product'
 include 'core'
+include 'gateway'
+
