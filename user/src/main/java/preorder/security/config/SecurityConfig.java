@@ -13,7 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import preorder.security.component.JWTFilter;
 import preorder.security.component.JWTUtil;
-import preorder.security.component.LoginFilter;
+import preorder.security.component.AuthenticationFilter;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -69,11 +69,11 @@ public class SecurityConfig {
 		//              Before : 특정 필터 이전에 등록
 		//              After : 특정 필터 이후에 등록
 		http
-				.addFilterAt(new LoginFilter(authenticationManager(configuration), jwtUtil), UsernamePasswordAuthenticationFilter.class);
+				.addFilterAt(new AuthenticationFilter(authenticationManager(configuration), jwtUtil), UsernamePasswordAuthenticationFilter.class);
 
 		// JWT 검증 필터 등록.
 		http
-				.addFilterBefore(new JWTFilter(jwtUtil), LoginFilter.class);
+				.addFilterBefore(new JWTFilter(jwtUtil), AuthenticationFilter.class);
 
 		return http.build();
 	}
@@ -81,7 +81,6 @@ public class SecurityConfig {
 	// BCryptPasswordEncoder 등록
 	@Bean
 	public BCryptPasswordEncoder bCryptPasswordEncoder() {
-
 		return new BCryptPasswordEncoder();
 	}
 }

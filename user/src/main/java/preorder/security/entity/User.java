@@ -14,7 +14,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Member {
+public class User {
 	@Id
 	String id;
 	String password;

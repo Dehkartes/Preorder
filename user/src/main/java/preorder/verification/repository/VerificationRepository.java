@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface VerificationRepository extends JpaRepository<Verification, String> {
-	@Query("select x.email from Member x where x.id = :id")
+	@Query("select x.email from User x where x.id = :id")
 	String findEmailById(@Param("id") String id);
 
 	@Query("select x.authCode from Verification x where x.id = :id")

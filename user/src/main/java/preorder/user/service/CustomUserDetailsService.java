@@ -1,8 +1,8 @@
-package preorder.member.service;
+package preorder.user.service;
 
 import preorder.security.component.CustomUserDetails;
-import preorder.security.entity.Member;
-import preorder.member.repository.MemberRepository;
+import preorder.security.entity.User;
+import preorder.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,12 +12,12 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
-	private final MemberRepository userRepository;
+	private final UserRepository userRepository;
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-		Member user = userRepository.findByName(username);
+		User user = userRepository.findByEmail(email);
 		if(user != null) {
 			return new CustomUserDetails(user);
 		}

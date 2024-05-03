@@ -9,7 +9,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
-import preorder.security.entity.Member;
+import preorder.security.entity.User;
 
 import java.io.IOException;
 
@@ -55,7 +55,7 @@ public class JWTFilter extends OncePerRequestFilter {
 		String username = jwtUtil.getUsername(token);
 		String role = jwtUtil.getRole(token);
 
-		Member userEntity = new Member();
+		User userEntity = new User();
 		userEntity.setName(username);
 		// 매번 요청마다 DB 조회해서 password 초기화 할 필요 x => 정확한 비밀번호 넣을 필요 없음 => 임시 비밀번호 설정!
 		userEntity.setPassword("temp_password");

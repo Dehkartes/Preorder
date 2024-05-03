@@ -1,7 +1,7 @@
-package preorder.member.controller;
+package preorder.user.controller;
 
-import preorder.security.entity.Member;
-import preorder.member.service.MemberService;
+import preorder.security.entity.User;
+import preorder.user.service.UserService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -11,8 +11,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("member")
 @RequiredArgsConstructor
-public class MemberController {
-	private final MemberService memberService;
+public class UserController {
+	private final UserService memberService;
 
 	@PostMapping("create")
 	public void createMember(@RequestParam Map<String, Object> payload) throws Exception {
@@ -30,8 +30,13 @@ public class MemberController {
 		memberService.verifyMember(id);
 	}
 	@PostMapping("find")
-	public Member findMember(String id) throws Exception {
+	public User findMember(String id) throws Exception {
 		return memberService.findMember(id);
+	}
+
+	@GetMapping("test")
+	public String test() {
+		return "test";
 	}
 
 }

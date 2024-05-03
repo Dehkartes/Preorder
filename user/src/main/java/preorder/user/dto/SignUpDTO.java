@@ -1,6 +1,6 @@
-package preorder.member.dto;
+package preorder.user.dto;
 
-import preorder.security.entity.Member;
+import preorder.security.entity.User;
 import preorder.util.AES256;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class RegisterRequest {
+public class SignUpDTO {
 	@NotBlank(message = "ID를 입력하세요.")
 	private String loginId;
 	@NotBlank(message = "비밀번호를 입력하세요.")
@@ -25,8 +25,8 @@ public class RegisterRequest {
 	private String address;
 	private String phone;
 
-	public Member toEntity() throws Exception {
-		return Member.builder()
+	public User toEntity() throws Exception {
+		return User.builder()
 				.id(this.loginId)
 				.password(this.password)
 				.name(AES256.aesCBCEncode(this.name))

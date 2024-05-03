@@ -1,4 +1,4 @@
-package preorder.member.dto;
+package preorder.user.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
