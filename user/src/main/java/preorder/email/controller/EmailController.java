@@ -16,10 +16,6 @@ public class EmailController {
 
 	@PostMapping("/sendAuth")
 	public String mailCheck(@RequestBody String email) {
-		int number = mailService.sendMail(email);
-
-		String num = "" + number;
-
-		return num;
+		return String.valueOf(mailService.sendMail(email));
 	}
 }
