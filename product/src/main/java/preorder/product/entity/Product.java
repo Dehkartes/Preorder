@@ -6,7 +6,6 @@ import lombok.*;
 @Entity
 @Table(name = "Product")
 @Getter
-@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,4 +17,8 @@ public class Product {
 	int price;
 	String detail;
 	boolean hide;
+
+	public void updateStock(int amount) {
+		this.stock = amount;
+	}
 }
