@@ -24,7 +24,7 @@ public class ProductScheduler {
 	private final RedisConnectionFactory redisConnectionFactory;
 
 	@Scheduled(cron = "0 0 0 * * ?") // 매일 자정에 실행
-	public void task() {
+	public void writeBackStock() {
 		Set<Integer> keys = new HashSet<>();
 		try (RedisConnection connection = redisConnectionFactory.getConnection()) {
 			RedisKeyCommands keyCommands = connection.keyCommands();

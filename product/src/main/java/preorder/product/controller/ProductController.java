@@ -22,6 +22,11 @@ public class ProductController {
 		return productService.getProductById(id);
 	}
 
+	@GetMapping("stock")
+	public int getStockById(@RequestParam("id") int id) {
+		return productService.lookAsideProductStock(id);
+	}
+
 	@PostMapping("findAll")
 	public List<Product> getProductList() throws Exception {
 		return productService.getProductList();
