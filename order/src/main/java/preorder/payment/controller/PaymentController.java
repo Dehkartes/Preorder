@@ -25,12 +25,12 @@ public class PaymentController {
 		paymentService.setCancel(wishListId);
 	}
 
-	@GetMapping("/aa")
-	public List<Payment> getPaymentListForUpdate() {
-		return paymentService.getPaymentListForUpdate();
+	@GetMapping("schedulerTest")
+	public void schedulerTest() {
+		paymentService.updateStatus();
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("{id}")
 	public Payment getPayment(@PathVariable int id) {
 		return paymentService.getPayment(id);
 	}
