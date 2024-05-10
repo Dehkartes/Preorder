@@ -40,7 +40,7 @@ public class PaymentService {
 	}
 
 	public void updateStatus() {
-
+		getPaymentListForUpdate().parallelStream().forEach(Payment::updateStatus);
 	}
 
 	public List<Payment> getPaymentListForUpdate() {
