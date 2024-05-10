@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import preorder.payment.entity.Payment;
 import preorder.payment.service.PaymentService;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("payment")
 @RequiredArgsConstructor
