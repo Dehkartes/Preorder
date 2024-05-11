@@ -62,6 +62,7 @@ public class PaymentService {
 	//사용자 가결제 취소, 본결제 실패 시 클라이언트에서 호출
 	public void rollbackPayment(Payment payment) {
 		// 제품 재고 추가
+		// Product 호출
 	}
 
 	//본결제
