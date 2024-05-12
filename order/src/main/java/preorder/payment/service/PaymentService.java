@@ -67,6 +67,6 @@ public class PaymentService {
 
 	//본결제
 	public void finalizePayment(Payment payment) {
-		//실패시(try catch) rollbackPayment 호출
+		//실패시(try catch) rollback Payment 호출
 	}
 }
