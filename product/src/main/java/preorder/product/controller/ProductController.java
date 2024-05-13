@@ -27,6 +27,11 @@ public class ProductController {
 		return productService.lookAsideProductStock(id);
 	}
 
+	@GetMapping("stock/writeback")
+	public void writeBack() {
+		productService.writeBackStock();
+	}
+
 	@PostMapping("findAll")
 	public List<Product> getProductList() throws Exception {
 		return productService.getProductList();
