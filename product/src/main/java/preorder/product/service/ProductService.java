@@ -60,4 +60,18 @@ public class ProductService {
 
 		keys.forEach(key -> updateStock(key, Integer.parseInt(redisTemplate.opsForValue().get(String.valueOf(key)))));
 	}
+
+	public boolean isEnoughStock(int id, int amount) {
+		int stock = lookAsideProductStock(id);
+		return stock - amount < 0;
+	}
+	public void decreaseStock(int id, int amount) {
+		int stock = lookAsideProductStock(id);
+		int x = stock - amount;
+		if (x < 0)
+			throw new RuntimeException("Out of stock");
+		else {
+			redisTemplate.opsForValue().set(String.valueOf(id), String.valueOf(x));
+		}
+	}
 }
