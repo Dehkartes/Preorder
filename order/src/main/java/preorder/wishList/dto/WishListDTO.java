@@ -12,12 +12,12 @@ import java.util.HashMap;
 @NoArgsConstructor
 @Getter
 public class WishListDTO {
-	private static ObjectMapper objectMapper = new ObjectMapper();
 	int id;
 	String memberId;
 	HashMap<String, Integer> itemList;
 
 	public WishList toEntity() throws JsonProcessingException {
+		ObjectMapper objectMapper = new ObjectMapper();
 		return WishList.builder()
 				.id(this.id)
 				.memberId(this.memberId)

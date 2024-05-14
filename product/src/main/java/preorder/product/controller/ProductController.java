@@ -36,4 +36,18 @@ public class ProductController {
 	public List<Product> getProductList() throws Exception {
 		return productService.getProductList();
 	}
+
+	@PostMapping("stock/isenough")
+	public boolean checkStock(int id, int amount) {
+		return productService.isEnoughStock(id, amount);
+	}
+
+	@PostMapping("stock/decrease")
+	public void decreaseStock(int id, int amount) {
+		try {
+			productService.decreaseStock(id, amount);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
 }
