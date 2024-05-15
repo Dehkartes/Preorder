@@ -1,5 +1,6 @@
 package preorder.payment.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -31,5 +32,10 @@ public class PaymentController {
 	@GetMapping("{id}")
 	public Payment getPayment(@PathVariable int id) {
 		return paymentService.getPayment(id);
+	}
+
+	@PostMapping("provisional")
+	public void provisional(int id) throws JsonProcessingException {
+		paymentService.provisionalPayment(paymentService.getPayment(id));
 	}
 }

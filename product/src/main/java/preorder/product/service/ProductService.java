@@ -63,7 +63,7 @@ public class ProductService {
 
 	public boolean isEnoughStock(int id, int amount) {
 		int stock = lookAsideProductStock(id);
-		return stock - amount < 0;
+		return stock - amount > 0;
 	}
 	public void decreaseStock(int id, int amount) {
 		int stock = lookAsideProductStock(id);

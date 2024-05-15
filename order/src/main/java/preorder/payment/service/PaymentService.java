@@ -70,32 +70,36 @@ public class PaymentService {
 		RLock lock = redisson.getLock("payment");
 		WishListDTO wishListDTO = wishListService.getWishListById(payment.getWishListId());
 		try	{
+			lock.lock(); //임계영역 시작 -> redisson 분산락 적용
 			WebClient webClient = WebClient.builder().build();
-			boolean isEnough = false
-			wishListDTO.getItemList().forEach((key, value) -> {
-				MultiValueMap<String, Integer> formdata = new LinkedMultiValueMap<>();
-				formdata.add(key, value);
-				String response = webClient.post()
-						.uri("http://localhost:8000/product/stock/stock/isenough")
+			wishListDTO.getItemList().forEach((id, amount) -> {
+				MultiValueMap<String, String> formdata = new LinkedMultiValueMap<>();
+				formdata.add("id", id);
+				formdata.add("amount", String.valueOf(amount));
+				//제품 재고 검사
+				Boolean response = webClient.post()
+						.uri("http://localhost:8000/product/stock/isenough")
 						.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 						.body(BodyInserters.fromFormData(formdata))
 						.retrieve()
 						.bodyToMono(Boolean.class)
 						.block();
+				if(!response)
+					throw new RuntimeException("out of stock");
 			});
-			lock.lock(); //임계영역 시작 -> redisson 분산락 적용
-			MultiValueMap<String, String> formdata = new LinkedMultiValueMap<>();
-			formdata.add("id", "amonut");
-
-
-			String response = webClient.post()
-					.uri("http://localhost:8000/product/stock/decrease")
-					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
-					.body(BodyInserters.fromFormData(formdata))
-					.retrieve()
-					.bodyToMono(String.class)
-					.block();
-			  //제품 재고 검사 //제품 재고 감소
+			wishListDTO.getItemList().forEach((id, amount) -> {
+				MultiValueMap<String, String> formdata = new LinkedMultiValueMap<>();
+				formdata.add("id", id);
+				formdata.add("amount", String.valueOf(amount));
+				//제품 재고 감소
+				String response = webClient.post()
+						.uri("http://localhost:8000/product/stock/decrease")
+						.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+						.body(BodyInserters.fromFormData(formdata))
+						.retrieve()
+						.bodyToMono(String.class)
+						.block();
+			});
 		} finally {
 			lock.unlock(); //임계영역 끝
 		}

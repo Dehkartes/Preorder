@@ -3,19 +3,25 @@ package preorder.Component;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.io.IOException;
-
 @Configuration
 public class RedissonConfig {
+	@Value("${spring.data.redis.host}")
+	private String host;
 
-	@Bean(destroyMethod = "shutdown")
-	public RedissonClient redissonClient() throws IOException {
-		// Redisson 설정 파일을 읽어 설정 객체를 만듭니다.
-		Config config = Config.fromYAML(getClass().getClassLoader().getResource("secret.yaml"));
-		// Redisson 클라이언트를 생성합니다.
+	@Value("${spring.data.redis.port}")
+	private int port;
+
+	private static final String REDISSON_HOST_PREFIX = "redis://";
+
+	@Bean
+	public RedissonClient redissonClient(){
+		Config config = new Config();
+		config.useSingleServer().setAddress(REDISSON_HOST_PREFIX + host + ":" + port);
+
 		return Redisson.create(config);
 	}
 }
