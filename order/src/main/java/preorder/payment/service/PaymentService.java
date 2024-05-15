@@ -1,6 +1,7 @@
 package preorder.payment.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
@@ -20,6 +21,7 @@ import preorder.wishList.service.WishListService;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 @RequiredArgsConstructor
 @Service
@@ -28,6 +30,7 @@ public class PaymentService {
 	private final WishListService wishListService;
 	private final RedissonClient redisson;
 
+	private static int count = 0;
 	public void createOrder(int wishlistId) {
 		orderRepository.save(
 				Payment.builder()
@@ -66,42 +69,56 @@ public class PaymentService {
 	}
 
 	//가결제
-	public void provisionalPayment(Payment payment) throws JsonProcessingException {
+	public int provisionalPayment(Payment payment) throws JsonProcessingException {
+		System.out.println("test");
 		RLock lock = redisson.getLock("payment");
 		WishListDTO wishListDTO = wishListService.getWishListById(payment.getWishListId());
 		try	{
-			lock.lock(); //임계영역 시작 -> redisson 분산락 적용
-			WebClient webClient = WebClient.builder().build();
-			wishListDTO.getItemList().forEach((id, amount) -> {
-				MultiValueMap<String, String> formdata = new LinkedMultiValueMap<>();
-				formdata.add("id", id);
-				formdata.add("amount", String.valueOf(amount));
-				//제품 재고 검사
-				Boolean response = webClient.post()
-						.uri("http://localhost:8000/product/stock/isenough")
-						.contentType(MediaType.APPLICATION_FORM_URLENCODED)
-						.body(BodyInserters.fromFormData(formdata))
-						.retrieve()
-						.bodyToMono(Boolean.class)
-						.block();
-				if(!response)
-					throw new RuntimeException("out of stock");
-			});
-			wishListDTO.getItemList().forEach((id, amount) -> {
-				MultiValueMap<String, String> formdata = new LinkedMultiValueMap<>();
-				formdata.add("id", id);
-				formdata.add("amount", String.valueOf(amount));
-				//제품 재고 감소
-				String response = webClient.post()
-						.uri("http://localhost:8000/product/stock/decrease")
-						.contentType(MediaType.APPLICATION_FORM_URLENCODED)
-						.body(BodyInserters.fromFormData(formdata))
-						.retrieve()
-						.bodyToMono(String.class)
-						.block();
-			});
+			boolean isLocked = lock.tryLock(100, 100, TimeUnit.SECONDS); //임계영역 시작 -> redisson 분산락 적용
+			if (isLocked) {
+				WebClient webClient = WebClient.builder().build();
+				wishListDTO.getItemList().forEach((id, amount) -> {
+					MultiValueMap<String, String> formdata = new LinkedMultiValueMap<>();
+					formdata.add("id", id);
+					formdata.add("amount", String.valueOf(amount));
+					//제품 재고 검사
+					Boolean response = webClient.post()
+							.uri("http://localhost:8000/product/stock/isenough")
+							.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+							.body(BodyInserters.fromFormData(formdata))
+							.retrieve()
+							.bodyToMono(Boolean.class)
+							.block();
+					if(!response)
+						throw new RuntimeException("out of stock");
+				});
+				wishListDTO.getItemList().forEach((id, amount) -> {
+					MultiValueMap<String, String> formdata = new LinkedMultiValueMap<>();
+					formdata.add("id", id);
+					formdata.add("amount", String.valueOf(amount));
+					//제품 재고 감소
+					String response = webClient.post()
+							.uri("http://localhost:8000/product/stock/decrease")
+							.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+							.body(BodyInserters.fromFormData(formdata))
+							.retrieve()
+							.bodyToMono(String.class)
+							.block();
+				});
+				count++;
+				System.out.println(count);
+				return count;
+			}
+			else {
+				throw new RuntimeException("connection time out");
+			}
+
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
 		} finally {
-			lock.unlock(); //임계영역 끝
+			if(lock != null && lock.isLocked()) {
+				lock.unlock();
+			} //임계영역 끝
 		}
 	}
 

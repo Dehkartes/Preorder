@@ -35,7 +35,7 @@ public class PaymentController {
 	}
 
 	@PostMapping("provisional")
-	public void provisional(int id) throws JsonProcessingException {
-		paymentService.provisionalPayment(paymentService.getPayment(id));
+	public String provisional(int id) throws JsonProcessingException {
+		return String.valueOf(paymentService.provisionalPayment(paymentService.getPayment(id)));
 	}
 }
