@@ -73,7 +73,7 @@
 
 # 주요 기능
 **API 명세**  
-- [User](README/User.html)  
+- [User](README/UserAPI/index.html)  
 - [Product](README/User.html) 
 - [Order](README/User.html) 
 
