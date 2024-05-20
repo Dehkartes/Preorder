@@ -13,11 +13,11 @@ public class EmailService {
     private static final String senderEmail= "hashfractal@gmail.com";
     private static int number;
 
-    public static void createNumber(){
+    public static void createNumber() {
         number = (int)(Math.random() * (90000)) + 100000;// (int) Math.random() * (최댓값-최소값+1) + 최소값
     }
 
-    public MimeMessage CreateMail(String mail){
+    public MimeMessage CreateMail(String mail) {
         createNumber();
         MimeMessage message = javaMailSender.createMimeMessage();
 
