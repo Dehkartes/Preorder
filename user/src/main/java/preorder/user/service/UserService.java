@@ -68,7 +68,7 @@ public class UserService {
 		return findUser;
 	}
 
-	public User getLoginMemberById(String memberId){
+	public User getLoginMemberById(String memberId) {
 		if(memberId == null) return null;
 
 		Optional<User> findMember = userRepository.findById(memberId);
