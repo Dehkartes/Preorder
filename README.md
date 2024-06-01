@@ -57,7 +57,7 @@
 
 <!-- ABOUT THE PROJECT -->
 # 프로젝트 개요
-- 동시성 솔루션이 포함된 MSA 쇼핑몰 API  
+- 동시성 솔루션이 포함된 MSA 쇼핑몰 API (2024.04 ~ 2024.05)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
