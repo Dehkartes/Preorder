@@ -28,7 +28,16 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-# 📜 아키텍처
+# 📜 아키텍쳐
 ![architecture](README/Architecture.png)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+# 📥 설치 및 실행
+
+- Docker 
+	```bash
+	docker compose -f "docker-compose.yml" up -d --build
+	```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
