@@ -15,9 +15,9 @@
 
 # ✨ 주요 기능
 **API 명세**  
-- [User](README/UserAPI/index.html)  
-- [Product](README/User.html) 
-- [Order](README/User.html) 
+- [User](https://dehkartes.github.io/swagger-ui/?urls.primaryName=PreorderUser)
+- [Product](https://dehkartes.github.io/swagger-ui/?urls.primaryName=PreorderProduct)
+- [Order](https://dehkartes.github.io/swagger-ui/?urls.primaryName=PreorderOrder) 
 
 **데이터 관리**
 - 사용자, 제품, 주문 CRUD
