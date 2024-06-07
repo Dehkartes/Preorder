@@ -5,11 +5,14 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-# 🧰 사용 기술
-* Java 21
-* Spring boot 3.2.5
-* Maria DB
-* Redis
+# 🧰 주요 기술
+- Java 21
+- Spring boot 3.2.5
+- JPA
+- Graddle
+- Maria DB
+- Redis
+- Docker / Docker Compose
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
