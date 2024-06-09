@@ -28,7 +28,7 @@ public class JWTFilter extends OncePerRequestFilter {
 		String authorization = request.getHeader("Authorization");
 
 		// Authorization 헤더 검증
-		if(authorization == null || !authorization.startsWith("Bearer ")){
+		if(authorization == null || !authorization.startsWith("Bearer ")) {
 
 			System.out.println("token null");
 			// 토큰이 유효하지 않으므로 request와 response를 다음 필터로 넘겨줌
