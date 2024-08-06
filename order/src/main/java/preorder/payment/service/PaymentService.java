@@ -9,9 +9,9 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.reactive.function.BodyInserter;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
+import preorder.payment.client.StockClient;
 import preorder.payment.entity.Payment;
 import preorder.payment.orderDTO.PaymentDTO;
 import preorder.payment.repository.PaymentRepository;
@@ -28,6 +28,7 @@ import java.util.concurrent.TimeUnit;
 public class PaymentService {
 	private final PaymentRepository orderRepository;
 	private final WishListService wishListService;
+	private final StockClient stockClient;
 	private final RedissonClient redisson;
 
 	private static int count = 0;
@@ -69,7 +70,7 @@ public class PaymentService {
 	}
 
 	//가결제
-	public int provisionalPayment(Payment payment) throws JsonProcessingException {
+	public int provisionalPaymentL(Payment payment) throws JsonProcessingException {
 		System.out.println("test");
 		RLock lock = redisson.getLock("payment");
 		WishListDTO wishListDTO = wishListService.getWishListById(payment.getWishListId());
@@ -90,6 +91,49 @@ public class PaymentService {
 							.bodyToMono(Boolean.class)
 							.block();
 					if(!response)
+						throw new RuntimeException("out of stock");
+				});
+				wishListDTO.getItemList().forEach((id, amount) -> {
+					MultiValueMap<String, String> formdata = new LinkedMultiValueMap<>();
+					formdata.add("id", id);
+					formdata.add("amount", String.valueOf(amount));
+					//제품 재고 감소
+					String response = webClient.post()
+							.uri("http://localhost:8000/product/stock/decrease")
+							.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+							.body(BodyInserters.fromFormData(formdata))
+							.retrieve()
+							.bodyToMono(String.class)
+							.block();
+				});
+				count++;
+				System.out.println(count);
+				return count;
+			}
+			else {
+				throw new RuntimeException("connection time out");
+			}
+
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if(lock != null && lock.isLocked()) {
+				lock.unlock();
+			} //임계영역 끝
+		}
+	}
+
+	//가결제 OpenFeign
+	public int provisionalPayment(Payment payment) throws JsonProcessingException {
+		System.out.println("test");
+		RLock lock = redisson.getLock("payment");
+		WishListDTO wishListDTO = wishListService.getWishListById(payment.getWishListId());
+		try	{
+			boolean isLocked = lock.tryLock(100, 100, TimeUnit.SECONDS); //임계영역 시작 -> redisson 분산락 적용
+			if (isLocked) {
+				WebClient webClient = WebClient.builder().build();
+				wishListDTO.getItemList().forEach((id, amount) -> {
+					if(!stockClient.isenough(Integer.parseInt(id), amount))
 						throw new RuntimeException("out of stock");
 				});
 				wishListDTO.getItemList().forEach((id, amount) -> {

@@ -17,6 +17,7 @@ import java.util.List;
 public class WishListService {
 	private final ObjectMapper objectMapper;
 	private final WishListRepository wishListRepository;
+
 	public List<Integer> getWishListIdByMenberId(String memberId) {
 		return wishListRepository.findIdByMemberId(memberId).stream().toList();
 	}
