@@ -10,12 +10,12 @@
         </processorPath>
         <module name="preorder.gateway.test" />
         <module name="preorder.order.test" />
+        <module name="preorder.member.main" />
         <module name="preorder.product.main" />
-        <module name="preorder.user.test" />
         <module name="preorder.product.test" />
-        <module name="preorder.user.main" />
         <module name="preorder.gateway.main" />
         <module name="preorder.core.main" />
+        <module name="preorder.member.test" />
         <module name="preorder.order.main" />
         <module name="preorder.core.test" />
       </profile>

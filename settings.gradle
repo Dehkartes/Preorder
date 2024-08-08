@@ -1,5 +1,5 @@
 rootProject.name = 'preorder'
-include 'user'
+include 'member'
 include 'order'
 include 'product'
 include 'core'

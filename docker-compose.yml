@@ -1,0 +1,107 @@
+version: "3"
+
+services:
+    userDB:
+        container_name: userDB
+        image: mariadb
+        environment:
+            - MARIADB_ROOT_PASSWORD=1234
+        ports:
+            - "3300:3306"
+        volumes:
+            - "./compose/scripts/Userinit.sql:/docker-entrypoint-initdb.d/1.sql"
+
+    productDB:
+        container_name: productDB
+        image: mariadb
+        environment:
+            - MARIADB_ROOT_PASSWORD=1234
+        ports:
+            - "3301:3306"
+        volumes:
+            - "./compose/scripts/Productinit.sql:/docker-entrypoint-initdb.d/1.sql"
+
+    orderDB:
+        container_name: orderDB
+        image: mariadb
+        environment:
+            - MARIADB_ROOT_PASSWORD=1234
+        ports:
+            - "3302:3306"
+        volumes:
+            - "./compose/scripts/Orderinit.sql:/docker-entrypoint-initdb.d/1.sql"
+
+    gateway:
+        container_name: gateWay
+        build:
+            dockerfile: compose/springboot/GateWayDockerfile
+        ports:
+            - "8000:8000"
+        volumes:
+            - ./:/app/
+
+    user:
+        container_name: user
+        build:
+            dockerfile: compose/springboot/UserDockerfile
+        ports:
+            - "8080:8080"
+        volumes:
+            - ./:/app/
+        depends_on:
+            - userDB
+        links:
+            - userDB:userDB
+        environment:
+            SPRING_DATASOURCE_URL: jdbc:mariadb://userDB:3306/Preorder
+            SPRING_DATASOURCE_USERNAME: root
+            SPRING_DATASOURCE_PASSWORD: 1234
+
+    product:
+        container_name: product
+        build:
+            dockerfile: compose/springboot/ProductDockerfile
+        ports:
+            - "8081:8081"
+        volumes:
+            - ./:/app/
+        depends_on:
+            - orderDB
+        links:
+            - orderDB:orderDB
+        environment:
+            SPRING_DATA_REDIS_HOST: redis
+            SPRING_DATASOURCE_URL: jdbc:mariadb://productDB:3306/Preorder
+            SPRING_DATASOURCE_USERNAME: root
+            SPRING_DATASOURCE_PASSWORD: 1234
+
+    order:
+        container_name: order
+        build:
+            dockerfile: compose/springboot/OrderDockerfile
+        ports:
+            - "8082:8082"
+        volumes:
+            - ./:/app/
+        depends_on:
+            - orderDB
+        links:
+            - orderDB:orderDB
+        environment:
+            SPRING_DATA_REDIS_HOST: redis
+            SPRING_DATASOURCE_URL: jdbc:mariadb://orderDB:3306/Preorder
+            SPRING_DATASOURCE_USERNAME: root
+            SPRING_DATASOURCE_PASSWORD: 1234
+
+    redis:
+        container_name: redis
+        image: redis:latest  # 사용할 Redis 이미지
+        ports:
+            - "6379:6379"  # 호스트와 컨테이너 간 포트 매핑
+        volumes:
+            - redis_data:/data  # 데이터 지속성을 위한 볼륨 설정
+        environment:
+            REDIS_PASSWORD: "1234"  # Redis 접근 비밀번호 설정 (선택사항)
+
+volumes:
+    redis_data:  # 볼륨 정의
