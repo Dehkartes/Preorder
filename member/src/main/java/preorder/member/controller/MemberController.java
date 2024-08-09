@@ -24,19 +24,25 @@ public class MemberController {
 		return memberService.findMember(id);
 	}
 
-	@PostMapping()
+	@PutMapping()
 	public void updateMember(@RequestParam Map<String, Object> payload) throws Exception {
 		memberService.updateMember(payload);
 	}
 
 	@DeleteMapping()
-	public void deleteMember(String id) throws Exception {
+	public void deleteMember(@RequestParam("id")String id) throws Exception {
 		memberService.deleteMember(id);
 	}
 
 	@Transactional
 	@PostMapping("verified")
-	public void verifyMember(@RequestBody String id) throws Exception {
+	public void verifyMember(@RequestBody String id) {
 		memberService.verifyMember(id);
+	}
+
+	@GetMapping("validate")
+	public boolean validateMember(@RequestParam("id") String id) throws Exception {
+		Member member = memberService.findMember(id);
+		return member != null && member.isVerified();
 	}
 }

@@ -13,7 +13,7 @@ spring:
                 - id: user
                   uri: http://localhost:8080/
                   predicates:
-                    - Path=/user/**
+                    - Path=/member/**
                 - id: product
                   uri: http://localhost:8081/
                   predicates:

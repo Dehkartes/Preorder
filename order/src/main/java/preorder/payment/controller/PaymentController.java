@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import preorder.payment.client.MemberClient;
 import preorder.payment.entity.Payment;
 import preorder.payment.service.PaymentService;
 
@@ -13,6 +14,7 @@ import preorder.payment.service.PaymentService;
 public class PaymentController {
 
 	private final PaymentService paymentService;
+
 	@PostMapping("create")
 	public void createOrder(Integer wishListId) {
 		paymentService.createOrder(wishListId);
@@ -37,5 +39,10 @@ public class PaymentController {
 	@PostMapping("provisional")
 	public String provisional(int id) throws JsonProcessingException {
 		return String.valueOf(paymentService.provisionalPayment(paymentService.getPayment(id)));
+	}
+
+	@GetMapping("test")
+	public boolean test() {
+		return paymentService.testFeign();
 	}
 }

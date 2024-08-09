@@ -1,4 +1,4 @@
-package preorder.Component;
+package preorder.component;
 
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
